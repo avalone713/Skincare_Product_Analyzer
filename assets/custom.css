@@ -1,0 +1,437 @@
+/* --- Import Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Quicksand:wght@500;700&display=swap');
+
+:root {
+    /* Core Palette */
+    --color-primary: #44576D;        /* Deep blue/grey - Main text, headers, primary actions */
+    --color-primary-accent: #5e8ea6; /* Lighter, desaturated blue - Secondary accents, borders */
+    --color-secondary: #56666f;      /* Muted blue-grey - Borders, secondary text */
+    --color-background: #DFEBF6;       /* App background - Very light blue/grey */
+    --color-panel: #b0ccdc;            /* Card/panel background - Light blue/grey */
+    --color-text-primary: #29353C;     /* Dark grey, almost black - Main text */
+    --color-text-secondary: #55626b;   /* Slightly lighter than primary text for less emphasis */
+  
+    /* Tabs */
+    --color-tab-active-bg: var(--color-panel);
+    --color-tab-inactive-bg: #AAC7D8;
+    --color-tab-active-text: var(--color-primary);
+    --color-tab-inactive-text: var(--color-primary); /* Ensure good contrast or adjust */
+    --color-tab-border: var(--color-primary-accent);
+  
+    /* Interactive Elements */
+    --color-input-background: #f0f6f6;
+    --color-input-border: var(--color-secondary);
+    --color-input-focus-border: var(--color-primary-accent);
+    --color-button-primary-bg: var(--color-primary);
+    --color-button-primary-text: #f0f6f6;
+    --color-button-primary-hover-bg: var(--color-primary-accent);
+  
+    /* Semantic Colors */
+    --color-warning-background: #fff3cd; /* Lighter yellow for warnings */
+    --color-warning-border: #ffeeba;
+    --color-warning-text: #856404;
+    --color-warning-strong-text: #664d03;
+  
+    --color-danger-background: #f8d7da; /* For delete/error actions */
+    --color-danger-border: #f5c6cb;
+    --color-danger-text: #721c24;
+    --color-danger-hover-bg: #e57373; /* From original delete button */
+    --color-danger-hover-text: #fbfef4;
+  
+    /* Slider */
+    --color-slider-rail: #c5cdd3;       /* Light grey for slider rail */
+    --color-slider-track: var(--color-primary);
+    --color-slider-handle: var(--color-panel);
+    --color-slider-handle-border: var(--color-primary);
+  
+    /* Other */
+    --border-radius-soft: 8px;     /* General border radius for softer corners */
+    --border-radius-sharp: 4px;    /* For smaller elements or a sharper look */
+    --box-shadow-gentle: 0 2px 12px rgba(41,53,60,0.07);
+  }
+
+/* --- Global Styles --- */
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    padding: 20px; 
+    font-size: 16px;
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 1.5em; /* Consistent top margin */
+    margin-bottom: 0.75em; /* Consistent bottom margin */
+}
+
+#app-title { 
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+.content-card-title { 
+    font-size: 1.5em;
+    color: var(--color-primary);
+    margin-top: 8px; 
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-input-border);
+    padding-bottom: 10px;
+}
+
+h4 { /* General H4 style */
+    font-size: 1.2em;
+    color: var(--color-primary-accent);
+}
+
+/* --- Labels --- */
+label, .dash-input-label, .dash-radioitems-label, .dash-checklist-label {
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 600; /* Semi-bold */
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+    display: block;
+    font-size: 0.95em;
+}
+
+/* --- Dropdowns --- */
+.Select, .VirtualizedSelect { 
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.Select-control, .VirtualizedSelect_control {
+    background-color: var(--color-input-background) !important;
+    border: 1px solid var(--color-input-border) !important;
+    border-radius: var(--border-radius-sharp) !important;
+    min-height: 40px; /* Ensure consistent height */
+}
+.Select-control:hover, .VirtualizedSelect_control:hover {
+    border-color: var(--color-input-focus-border) !important;
+}
+.Select.is-focused > .Select-control, .VirtualizedSelect.is-focused .VirtualizedSelect_control {
+    border-color: var(--color-input-focus-border) !important;
+    box-shadow: 0 0 0 1px var(--color-input-focus-border) !important;
+  }
+  
+.Select-value-label, .Select-placeholder, .VirtualizedSelect_placeholder, .VirtualizedSelect_singleValue {
+      color: var(--color-text-primary) !important;
+      line-height: 38px; /* Vertically align text */
+  }
+  
+.VirtualizedSelectOption {
+      background-color: var(--color-input-background);
+      color: var(--color-text-primary);
+      padding: 8px 12px;
+  }
+  
+.VirtualizedSelectFocusedOption {
+      background-color: var(--color-panel) !important; /* Use panel color for focus, distinct from input bg */
+      color: var(--color-text-primary);
+  }
+
+/* --- Input Fields --- */
+input[type="text"].dash-input, .dash-input[type="number"] { 
+    background-color: var(--color-input-background);
+    border: 1px solid var(--color-input-border);
+    color: var(--color-text-primary);
+    padding: 10px;
+    border-radius: var(--border-radius-sharp);
+    font-family: 'Nunito Sans', sans-serif;
+    width: calc(100% - 22px); /* accounts for padding */
+    min-height: 38px; /* Consistent height */
+    box-sizing: border-box;
+}
+input[type="text"].dash-input:focus, .dash-input[type="number"]:focus {
+  border-color: var(--color-input-focus-border) !important;
+  box-shadow: 0 0 0 1px var(--color-input-focus-border) !important;
+  outline: none;
+}
+
+input[type="text"]::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+}
+
+/* --- Checklists & RadioItems --- */
+.dash-checklist, .dash-radioitems {
+    padding: 5px 0;
+}
+.dash-checklist .dash-label, .dash-radioitems .dash-label { 
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    color: var(--color-text-primary);
+    margin-bottom: 0; /* Handled by item spacing */
+    padding-left: 8px;
+    font-size: 0.9em;
+}
+.dash-checklist .checklist-item input[type="checkbox"],
+.dash-radioitems .radio-item input[type="radio"] {
+    margin-right: 8px;
+    accent-color: var(--color-primary-accent);
+    transform: scale(1.1);
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* --- Buttons --- */
+.dash-button, button { /* General button styling */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    background-color: var(--color-button-primary-bg);
+    color: var(--color-button-primary-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-sharp);
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+.dash-button:hover, button:hover {
+    background-color: var(--color-button-primary-hover-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- Warning/Info Messages (Generalize your #allergy-warnings) --- */
+.info-message-warning {
+    background-color: var(--color-warning-background);
+    border-left: 5px solid var(--color-warning-border);
+    color: var(--color-warning-text);
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius-sharp);
+    box-shadow: var(--box-shadow-gentle);
+}
+
+.info-message-warning strong {
+    color: var(--color-warning-strong-text);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-message-warning ul {
+    list-style-type: none; /* Or 'disc' if preferred, then adjust padding-left */
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.info-message-warning li {
+    margin-bottom: 3px;
+    font-size: 0.95em;
+}
+
+/* --- Horizontal Rule --- */
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* --- Layout Containers (Cards/Panels) --- */
+.content-card { 
+    background-color: #f0f6f6;
+    border: 1.5px solid var(--color-input-border);
+    color: var(--color-text-primary);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-gentle);
+    max-width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+    position: relative;
+}
+
+/* Main right card layout only */
+.main-content-card {
+    background: var(--color-panel);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-gentle);
+    border: 1.5px solid var(--color-input-border);
+    padding: 12px 12px 12px 12px;
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+    width: 100%;
+    min-width: 1000px;
+    max-width: 1400px;
+    height: auto;
+    min-height: 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Remove background/border from main-content-area if present */
+.main-content-area {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* Left panel */
+.filter-column {
+    background-color: var(--color-panel);
+    padding: 25px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-gentle);
+    border-right: 1px solid var(--color-input-border);
+    border: 1.5px solid var(--color-input-border);
+    margin: 12px 0 12px 12px !important;
+    width: 400px;
+    top: 12px;
+    position: sticky;
+    height: 90vh;
+}
+
+/* --- Tabs styling --- */
+.custom-tabs-container {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.custom-tab, .custom-tab--selected {
+    background: #f0f6f6 !important;
+    color: var(--color-primary) !important;
+    border: 1.5px solid var(--color-input-border) !important;
+    border-bottom: 1.5px solid var(--color-input-border) !important;
+    border-radius: var(--border-radius-soft) var(--border-radius-soft) 0 0 !important;
+    margin-right: 4px !important;
+    margin-left: 4px !important;
+    margin-top: 16px !important;
+    padding: 10px 0 10px 0 !important; 
+    height: 45px;
+    font-size: 1.1rem;
+    font-weight: 600 !important;
+    box-shadow: none;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 440px;
+}
+
+.custom-tab--selected {
+    background: #f0f6f6 !important;
+    color: var(--color-primary) !important;
+    border-bottom: 1.5px solid #5e8ea6 !important;
+    z-index: 4;
+}
+
+/* --- DataTable Styling --- */
+.dash-spreadsheet-container .dash-spreadsheet-inner table {
+    font-family: 'Nunito Sans', sans-serif;
+}
+.dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: var(--color-panel);
+    color: var(--color-primary);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-align: left;
+}
+.dash-spreadsheet-container .dash-spreadsheet-inner td {
+    color: var(--color-text-primary);
+}
+.dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(even) td {
+    background-color: lighten(var(--color-panel), 3%); 
+}
+
+/* --- Figure Title --- */
+.figure-title {
+    font-family: 'Poppins', Arial, sans-serif !important;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* --- Figure Header (for chart titles above figures) --- */
+.figure-header {
+    color: var(--color-primary);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 1.35rem; 
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding: 4px;
+}
+
+/* Tabs styling */
+.dash-tabs {
+    background: none;
+    border-bottom: 2px solid var(--color-tab-border);
+    margin-bottom: 0;
+}
+
+.dash-tab {
+    background: var(--color-tab-inactive);
+    color: var(--color-primary);
+    border: 1px solid var(--color-tab-border);
+    border-bottom: 2px solid var(--color-tab-border);
+    border-radius: 12px 12px 0 0;
+    margin-right: 4px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: background 0.2s;
+}
+
+.dash-tab--selected {
+    background: var(--color-tab-active);
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-tab-active);
+    z-index: 2;
+}
+
+.content-card.figure-area {
+    background-color: #f0f6f6;
+    border: 1.5px solid var(--color-input-border);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-gentle);
+    margin-right: 12px;
+    margin-left: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    padding: 0;
+    height: 100%;
+}
+
+.content-card.figure-area .js-plotly-plot,
+.content-card.figure-area .plotly {
+    background: #f0f6f6 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    margin-top: 12px;
+    margin: 0 !important;
+    box-sizing: border-box;
+    padding: 0;
+}
+.content-card.figure-area div[id*="scatter-price-reviews"] { 
+    width: 100%;
+}
