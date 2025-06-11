@@ -7,7 +7,7 @@ import re
 
 # --- Load and Process Main Product Data ---
 print("Loading main product data...")
-df_final = pd.read_csv("/Users/alexvalone/Desktop/Data_Science/DS_Q3/Visualization/skincare_project/data/final_merged_products.csv", low_memory=False)
+df_final = pd.read_csv(".../data/processed/final_merged_products.csv", low_memory=False)
 
 print(df_final.head())
 print(df_final.info())
@@ -194,7 +194,7 @@ df_final['n_of_loves_bin'] = df_final['n_of_loves_bin'].astype(str).map(label_ma
 
 # Save the processed data
 print("\nSaving processed data...")
-df_final.to_csv('/Users/alexvalone/Desktop/Data_Science/DS_Q3/Visualization/skincare_project/data/final_products.csv', index=False)
+df_final.to_csv('.../data/processed/final_products.csv', index=False)
 
 print("\nData preparation complete!")
 

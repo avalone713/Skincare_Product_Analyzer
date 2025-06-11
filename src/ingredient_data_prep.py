@@ -4,9 +4,9 @@ import re
 
 # Load the data
 print("Loading data...")
-df_paula = pd.read_csv('/Users/alexvalone/Desktop/Data_Science/DS_Q3/Visualization/skincare_project/data/paula_ingredient_details/Paula_embedding_SUMLIST_before_422.csv', low_memory=False)
-df_final = pd.read_csv('/Users/alexvalone/Desktop/Data_Science/DS_Q3/Visualization/skincare_project/data/final_products.csv', low_memory=False)
-df_skincare = pd.read_csv('/Users/alexvalone/Desktop/Data_Science/DS_Q3/Visualization/skincare_project/data/skincare/skincare_df_cleaned.csv', low_memory=False)
+df_paula = pd.read_csv('.../data/raw/Paula_embedding_SUMLIST_before_422.csv', low_memory=False)
+df_final = pd.read_csv('.../data/processed/final_products.csv', low_memory=False)
+df_skincare = pd.read_csv('.../data/processed/skincare_df_cleaned.csv', low_memory=False)
 
 print("\n--- Original DataFrames Info ---")
 print("\nFinal Products DataFrame:")

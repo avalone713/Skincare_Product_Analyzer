@@ -9,9 +9,9 @@ import ast
 
 # --- Data Loading ---
 try:
-    df_final = pd.read_csv('data/final_products_ingredients.csv', low_memory=False)
+    df_final = pd.read_csv('data/processed/final_products_ingredients.csv', low_memory=False)
 except FileNotFoundError:
-    print("ERROR: 'data/final_products_ingredients.csv' not found. Please ensure the file exists in the 'data' directory.")
+    print("ERROR: 'data/processed/final_products_ingredients.csv' not found. Please ensure the file exists in the 'data' directory.")
     df_final = pd.DataFrame({
         'category': pd.Series(dtype='str'),
         'Brand': pd.Series(dtype='str'),
