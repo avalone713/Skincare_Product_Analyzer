@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 from dash.exceptions import PreventUpdate
 import numpy as np
 import ast 
+import textwrap
 
 # --- Data Loading ---
 try:
@@ -167,13 +168,13 @@ app.layout = html.Div([
                 id='main-tabs',
                 value='reviews-price-tab',
                 children=[
-                    dcc.Tab(label='Compare Price & Reviews', value='reviews-price-tab', className="custom-tab"),
-                    dcc.Tab(label='In-Depth Ingredient Analysis', value='ingredient-analysis-tab', className="custom-tab")
+                    dcc.Tab(label='Compare Price & Reviews', value='reviews-price-tab', className='custom-tab', selected_className='custom-tab--selected'),
+                    dcc.Tab(label='In-Depth Ingredient Analysis', value='ingredient-analysis-tab', className='custom-tab', selected_className='custom-tab--selected')
                 ], 
                 className="custom-tabs-container", 
                 style={'marginBottom': '0'}
             ),
-            html.Div(id='main-tab-content', className="content-card figure-area", style={'padding': '20px', 'width': '100%', 'height': 'fit-content'})
+            html.Div(id='main-tab-content', className="content-card figure-area")
         ], className="main-content-card", style={'flex': '1', 'height': 'fit-content'})
     ], style={'display': 'flex','columnGap': '32px'})
 ])
@@ -1135,11 +1136,12 @@ def update_ingredient_analysis_display(selected_product_name, analysis_type, sel
         # Generate formulation profile sunburst plot
         paula_details_list = parse_paula_details(product_data_row.get('paula_ingredient_details'))
         sunburst_div = html.Div([html.H5(f"Formulation Profile for {selected_product_name}", className="figure-header")])
-        
         if paula_details_list:
-            # Prepare data for sunburst plot
+            # Prepare data for sunburst plot (original logic)
             sunburst_data = []
             for detail in paula_details_list:
+                if not isinstance(detail, dict):
+                    continue
                 ing_name = detail.get('ingredient_name', detail.get('name', 'N/A'))
                 parent_cats = detail.get('category', detail.get('categories', []))
                 if isinstance(parent_cats, str):
@@ -1147,15 +1149,20 @@ def update_ingredient_analysis_display(selected_product_name, analysis_type, sel
                 if isinstance(parent_cats, list) and parent_cats:
                     for cat in parent_cats:
                         sunburst_data.append({'category': cat, 'ingredient': ing_name.capitalize(), 'value': 1})
-            
-            if sunburst_data:
-                # Create and style sunburst plot
-                sunburst_df = pd.DataFrame(sunburst_data)
+            sunburst_df = pd.DataFrame(sunburst_data)
+            if not sunburst_df.empty:
+                total_value = sunburst_df['value'].sum()
+                cat_totals = sunburst_df.groupby('category')['value'].sum().to_dict()
+                sunburst_df['cat_proportion'] = sunburst_df['category'].map(lambda c: cat_totals[c] / total_value)
                 fig = px.sunburst(
                     sunburst_df,
                     path=['category', 'ingredient'],
                     values='value',
-                    title='Ingredient Category Sunburst'
+                    title='Ingredient Category Sunburst',
+                    custom_data=['cat_proportion']
+                )
+                fig.update_traces(
+                    hovertemplate="<b>%{label}</b><br>Category Proportion: %{customdata[0]:.1%}<extra></extra>"
                 )
                 fig.update_layout(
                     paper_bgcolor="rgba(0,0,0,0)",
@@ -1165,10 +1172,10 @@ def update_ingredient_analysis_display(selected_product_name, analysis_type, sel
                     height=700,
                     width=700,
                     hoverlabel=dict(
-                        bgcolor='white',
+                        bgcolor="#f0f6f6",
                         font_size=14,
-                        font_family='Nunito Sans, sans-serif',
-                        align='left'
+                        font_family="Nunito Sans, sans-serif",
+                        font_color="#29353C"
                     )
                 )
                 sunburst_div.children.append(
@@ -1178,7 +1185,7 @@ def update_ingredient_analysis_display(selected_product_name, analysis_type, sel
                             style={'width': '100%', 'height': '100%'},
                             config={'responsive': True, 'displayModeBar': True, 'displaylogo': False}
                         ),
-                        style={'width': '100%', 'height': '700px'}
+                        style={'width': '100%', 'height': '700px', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}
                     )
                 )
             else:

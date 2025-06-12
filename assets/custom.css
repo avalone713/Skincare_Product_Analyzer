@@ -3,17 +3,17 @@
 
 :root {
     /* Core Palette */
-    --color-primary: #44576D;        /* Deep blue/grey - Main text, headers, primary actions */
-    --color-primary-accent: #5e8ea6; /* Lighter, desaturated blue - Secondary accents, borders */
-    --color-secondary: #56666f;      /* Muted blue-grey - Borders, secondary text */
+    --color-primary: #44576D;        /* Main text, headers, primary actions */
+    --color-primary-accent: #5e8ea6; /* Secondary accents, borders */
+    --color-secondary: #56666f;      /* Borders */
     --color-background: #DFEBF6;       /* App background - Very light blue/grey */
     --color-panel: #b0ccdc;            /* Card/panel background - Light blue/grey */
-    --color-text-primary: #29353C;     /* Dark grey, almost black - Main text */
+    --color-text-primary: #29353C;     /* Main text */
     --color-text-secondary: #55626b;   /* Slightly lighter than primary text for less emphasis */
   
     /* Tabs */
-    --color-tab-active-bg: var(--color-panel);
-    --color-tab-inactive-bg: #AAC7D8;
+    --color-tab-active: #f0f6f6;
+    --color-tab-inactive: var(--color-panel);
     --color-tab-active-text: var(--color-primary);
     --color-tab-inactive-text: var(--color-primary); /* Ensure good contrast or adjust */
     --color-tab-border: var(--color-primary-accent);
@@ -55,8 +55,8 @@ body {
     font-family: 'Nunito Sans', sans-serif;
     background-color: var(--color-background);
     color: var(--color-text-primary);
-    padding: 20px; 
-    font-size: 16px;
+    padding: 12px; 
+    font-size: 14px;
 }
 
 /* --- Headings --- */
@@ -64,40 +64,40 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     color: var(--color-primary);
-    margin-top: 1.5em; /* Consistent top margin */
-    margin-bottom: 0.75em; /* Consistent bottom margin */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
 #app-title { 
     text-align: center;
     color: var(--color-primary);
-    margin-bottom: 30px;
-    font-size: 2.2em;
+    margin-bottom: 20px;
+    font-size: 1.8em;
     font-weight: 700;
 }
 
 .content-card-title { 
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: var(--color-primary);
-    margin-top: 8px; 
-    margin-bottom: 20px;
+    margin-top: 6px; 
+    margin-bottom: 12px;
     border-bottom: 1px solid var(--color-input-border);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 h4 { /* General H4 style */
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: var(--color-primary-accent);
 }
 
 /* --- Labels --- */
 label, .dash-input-label, .dash-radioitems-label, .dash-checklist-label {
     font-family: 'Poppins', sans-serif; 
-    font-weight: 600; /* Semi-bold */
+    font-weight: 600;
     color: var(--color-text-primary);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     display: block;
-    font-size: 0.95em;
+    font-size: 0.9em;
 }
 
 /* --- Dropdowns --- */
@@ -109,7 +109,7 @@ label, .dash-input-label, .dash-radioitems-label, .dash-checklist-label {
     background-color: var(--color-input-background) !important;
     border: 1px solid var(--color-input-border) !important;
     border-radius: var(--border-radius-sharp) !important;
-    min-height: 40px; /* Ensure consistent height */
+    min-height: 32px;
 }
 .Select-control:hover, .VirtualizedSelect_control:hover {
     border-color: var(--color-input-focus-border) !important;
@@ -140,12 +140,13 @@ input[type="text"].dash-input, .dash-input[type="number"] {
     background-color: var(--color-input-background);
     border: 1px solid var(--color-input-border);
     color: var(--color-text-primary);
-    padding: 10px;
+    padding: 6px 8px;
     border-radius: var(--border-radius-sharp);
     font-family: 'Nunito Sans', sans-serif;
-    width: calc(100% - 22px); /* accounts for padding */
-    min-height: 38px; /* Consistent height */
+    width: calc(100% - 18px);
+    min-height: 32px;
     box-sizing: border-box;
+    font-size: 0.9em;
 }
 input[type="text"].dash-input:focus, .dash-input[type="number"]:focus {
   border-color: var(--color-input-focus-border) !important;
@@ -180,17 +181,18 @@ input[type="text"]::placeholder {
 }
 
 /* --- Buttons --- */
-.dash-button, button { /* General button styling */
+.dash-button, button {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     background-color: var(--color-button-primary-bg);
     color: var(--color-button-primary-text);
     border: none;
-    padding: 10px 20px;
+    padding: 6px 12px;
     border-radius: var(--border-radius-sharp);
     cursor: pointer;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
+    font-size: 0.9em;
 }
 .dash-button:hover, button:hover {
     background-color: var(--color-button-primary-hover-bg);
@@ -217,7 +219,7 @@ input[type="text"]::placeholder {
 }
 
 .info-message-warning ul {
-    list-style-type: none; /* Or 'disc' if preferred, then adjust padding-left */
+    list-style-type: none;
     padding-left: 0;
     margin-bottom: 0;
 }
@@ -238,14 +240,15 @@ hr {
 /* --- Layout Containers (Cards/Panels) --- */
 .content-card { 
     background-color: #f0f6f6;
-    border: 1.5px solid var(--color-input-border);
+    border: 1px solid var(--color-input-border);
     color: var(--color-text-primary);
     border-radius: var(--border-radius-soft);
     box-shadow: var(--box-shadow-gentle);
     max-width: 100%;
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
     position: relative;
+    padding: 8px;
 }
 
 /* Main right card layout only */
@@ -253,46 +256,39 @@ hr {
     background: var(--color-panel);
     border-radius: var(--border-radius-soft);
     box-shadow: var(--box-shadow-gentle);
-    border: 1.5px solid var(--color-input-border);
-    padding: 12px 12px 12px 12px;
-    margin-top: 12px !important;
-    margin-bottom: 12px !important;
+    border: 1px solid var(--color-input-border);
+    padding: 8px;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
     width: 100%;
-    min-width: 1000px;
-    max-width: 1400px;
+    min-width: 800px;
+    max-width: 1200px;
     height: auto;
-    min-height: 800px;
+    min-height: 600px;
     position: relative;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-}
-
-/* Remove background/border from main-content-area if present */
-.main-content-area {
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
+    margin-right: 8px;
 }
 
 /* Left panel */
 .filter-column {
     background-color: var(--color-panel);
-    padding: 25px;
+    padding: 16px;
     border-radius: var(--border-radius-soft);
     box-shadow: var(--box-shadow-gentle);
-    border-right: 1px solid var(--color-input-border);
-    border: 1.5px solid var(--color-input-border);
-    margin: 12px 0 12px 12px !important;
-    width: 400px;
-    top: 12px;
+    border: 1px solid var(--color-input-border);
+    margin: 8px 0 8px 8px !important;
+    width: 300px;
+    top: 8px;
     position: sticky;
-    height: 90vh;
+    height: 85vh;
 }
 
 /* --- Tabs styling --- */
 .custom-tabs-container {
+    background: var(--color-panel);
     margin-bottom: 0;
     margin-top: 0;
     padding-left: 0;
@@ -301,20 +297,21 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .custom-tab, .custom-tab--selected {
-    background: #f0f6f6 !important;
     color: var(--color-primary) !important;
-    border: 1.5px solid var(--color-input-border) !important;
-    border-bottom: 1.5px solid var(--color-input-border) !important;
+    border: 1px solid var(--color-input-border) !important;
+    border-bottom: 1px solid var(--color-input-border) !important;
     border-radius: var(--border-radius-soft) var(--border-radius-soft) 0 0 !important;
     margin-right: 4px !important;
     margin-left: 4px !important;
-    margin-top: 16px !important;
-    padding: 10px 0 10px 0 !important; 
-    height: 45px;
-    font-size: 1.1rem;
+    margin-top: 8px !important;
+    padding: 6px 0 !important; 
+    height: 36px;
+    font-size: 0.95rem;
     font-weight: 600 !important;
     box-shadow: none;
     position: relative;
@@ -323,19 +320,23 @@ hr {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    min-width: 440px;
+    min-width: 300px;
+}
+
+.custom-tab {
+    background: var(--color-tab-inactive) !important;
 }
 
 .custom-tab--selected {
-    background: #f0f6f6 !important;
-    color: var(--color-primary) !important;
-    border-bottom: 1.5px solid #5e8ea6 !important;
+    background: var(--color-tab-active) !important;
+    border-bottom: none !important;
     z-index: 4;
 }
 
 /* --- DataTable Styling --- */
 .dash-spreadsheet-container .dash-spreadsheet-inner table {
     font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.9em;
 }
 .dash-spreadsheet-container .dash-spreadsheet-inner th {
     background-color: var(--color-panel);
@@ -343,9 +344,12 @@ hr {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     text-align: left;
+    font-size: 0.9em;
+    padding: 6px 8px;
 }
 .dash-spreadsheet-container .dash-spreadsheet-inner td {
     color: var(--color-text-primary);
+    padding: 4px 6px;
 }
 .dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(even) td {
     background-color: lighten(var(--color-panel), 3%); 
@@ -356,7 +360,7 @@ hr {
     font-family: 'Poppins', Arial, sans-serif !important;
     font-weight: 700;
     color: var(--color-primary);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     letter-spacing: 0.05em;
     text-align: center;
 }
@@ -366,11 +370,11 @@ hr {
     color: var(--color-primary);
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    font-size: 1.35rem; 
+    font-size: 1.1rem; 
     font-weight: 600;
-    margin-top: 8px;
-    margin-bottom: 12px;
-    padding: 4px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    padding: 2px;
 }
 
 /* Tabs styling */
@@ -402,21 +406,23 @@ hr {
 
 .content-card.figure-area {
     background-color: #f0f6f6;
-    border: 1.5px solid var(--color-input-border);
+    border: 1px solid var(--color-input-border);
     border-radius: var(--border-radius-soft);
     box-shadow: var(--box-shadow-gentle);
-    margin-right: 12px;
     margin-left: 12px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-right: 12px;
     width: auto;
     max-width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: visible;
-    padding: 0;
-    height: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-top: none;
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .content-card.figure-area .js-plotly-plot,
@@ -427,10 +433,8 @@ hr {
     min-width: 0;
     min-height: 0;
     max-width: 100%;
-    margin-top: 12px;
-    margin: 0 !important;
+    margin-top: 4px;
     box-sizing: border-box;
-    padding: 0;
 }
 .content-card.figure-area div[id*="scatter-price-reviews"] { 
     width: 100%;
