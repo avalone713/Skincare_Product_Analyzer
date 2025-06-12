@@ -2,8 +2,6 @@
 
 An interactive web dashboard for in-depth skincare product analysis, allowing users to filter by ingredients, compare products based on price and reviews, and perform deep dives into ingredient composition and similarity.
 
-**[➡️ View Live Demo Here](https://your-app-name.onrender.com)** ![App Screenshot](assets/screenshot.png)
-
 This dashboard empowers users to make informed decisions about skincare products through an interactive interface.
 
 ### 1. Comprehensive Filtering Panel
@@ -41,7 +39,6 @@ Select a single product from your filtered list to perform a detailed investigat
 * **Backend & Frontend:** Python, [Dash](https://dash.plotly.com/)
 * **Data Manipulation:** [Pandas](https://pandas.pydata.org/)
 * **Visualizations:** [Plotly Express](https://plotly.com/python/plotly-express/)
-* **Deployment:** Hosted on [Render](https://render.com/) via Gunicorn
 
 ## Data & Preprocessing Workflow
 
