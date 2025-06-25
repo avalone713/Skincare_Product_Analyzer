@@ -117,6 +117,7 @@ INTERACTION_RULES = [
 ]
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
+server = app.server
 
 # --- App Layout ---
 app.layout = html.Div([
@@ -1236,3 +1237,4 @@ def toggle_distribution_group(plot_type):
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
