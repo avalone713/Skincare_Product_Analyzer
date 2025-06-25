@@ -3,6 +3,11 @@
 An interactive web dashboard for in-depth skincare product analysis, allowing users to filter by ingredients, compare products based on price and reviews, and perform deep dives into ingredient composition and similarity.
 
 This dashboard empowers users to make informed decisions about skincare products through an interactive interface.
+## Demo
+
+![Skincare Product Analyzer](screenshot.png)
+
+Visit the live app: [https://skincare-product-analyzer-9p8t.onrender.com](https://skincare-product-analyzer-9p8t.onrender.com)
 
 ### 1. Comprehensive Filtering Panel
 
